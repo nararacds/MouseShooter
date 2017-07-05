@@ -3,13 +3,13 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
-	// Use this for initialization
+	Rigidbody myRigidBody;
+
 	void Start () {
 	
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
+	public void Move(Vector3 velocity){
+
 	}
 }
