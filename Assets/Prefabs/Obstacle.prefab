@@ -12,7 +12,7 @@ GameObject:
   - 65: {fileID: 6599056}
   - 23: {fileID: 2321552}
   - 208: {fileID: 20854326}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
