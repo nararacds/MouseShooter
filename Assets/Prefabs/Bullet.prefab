@@ -91,7 +91,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Time: 0.02
+  m_Time: 0.2
   m_StartWidth: 0.1
   m_EndWidth: 0.005
   m_Colors:
@@ -126,7 +126,7 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
-  trailColour: {r: 1, g: 1, b: 1, a: 0}
+  trailColour: {r: 1, g: 0.9862069, b: 0.5, a: 0.441}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ac92f01af64fc48968def03861e576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireMode: 2
+  fireMode: 0
   projectileSpawn:
   - {fileID: 413642}
   - {fileID: 416556}
