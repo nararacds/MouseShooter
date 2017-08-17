@@ -68,4 +68,10 @@ public class Player : LivingEntity {
 		}
 
 	}
+
+	public override void Die ()
+	{
+		AudioManager.instance.PlaySound ("Player Death", transform.position);
+		base.Die ();
+	}
 }
