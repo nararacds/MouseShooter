@@ -5,9 +5,9 @@ public class AudioManager : MonoBehaviour {
 
 	public enum AudioChannel {Master, Sfx, Music};
 
-	float masterVolumePercent = .2f;
-	float sfxVolumePercent = 1;
-	float musicVolumePercent = 1;
+	public float masterVolumePercent { get; private set; }
+	public float musicVolumePercent { get; private set; }
+	public float sfxVolumePercent { get; private set; }
 
 	AudioSource sfx2DSource;
 	AudioSource[] musicSources;
@@ -42,11 +42,13 @@ public class AudioManager : MonoBehaviour {
 			newSfx2Dsource.transform.parent = transform;
 
 			audioListener = FindObjectOfType<AudioListener> ().transform;
-			playerT = FindObjectOfType<Player> ().transform;
+			if (FindObjectOfType<Player> () != null) {
+				playerT = FindObjectOfType<Player> ().transform;
+			}
 
-			masterVolumePercent = PlayerPrefs.GetFloat ("master vol", masterVolumePercent);
-			sfxVolumePercent = PlayerPrefs.GetFloat ("sfx vol", sfxVolumePercent);
-			musicVolumePercent = PlayerPrefs.GetFloat ("music vol", musicVolumePercent);
+			masterVolumePercent = PlayerPrefs.GetFloat ("master vol", 1);
+			musicVolumePercent = PlayerPrefs.GetFloat ("music vol", 1);
+			sfxVolumePercent = PlayerPrefs.GetFloat ("sfx vol", 1);
 		}
 	}
 
@@ -61,11 +63,11 @@ public class AudioManager : MonoBehaviour {
 		case AudioChannel.Master:
 			masterVolumePercent = volumePercent;
 			break;
-		case AudioChannel.Sfx:
-			sfxVolumePercent = volumePercent;
-			break;
 		case AudioChannel.Music:
 			musicVolumePercent = volumePercent;
+			break;
+		case AudioChannel.Sfx:
+			sfxVolumePercent = volumePercent;
 			break;
 		}
 
@@ -73,8 +75,8 @@ public class AudioManager : MonoBehaviour {
 		musicSources [1].volume = musicVolumePercent * masterVolumePercent;
 
 		PlayerPrefs.SetFloat ("master vol", masterVolumePercent);
-		PlayerPrefs.SetFloat ("sfx vol", sfxVolumePercent);
 		PlayerPrefs.SetFloat ("music vol", musicVolumePercent);
+		PlayerPrefs.SetFloat ("sfx vol", sfxVolumePercent);
 	}
 
 	public void PlayMusic(AudioClip clip, float fadeDuration = 1) {
@@ -88,6 +90,7 @@ public class AudioManager : MonoBehaviour {
 	public void PlaySound(AudioClip clip, Vector3 pos) {
 		if (clip != null) {
 			AudioSource.PlayClipAtPoint (clip, pos, sfxVolumePercent * masterVolumePercent);
+			//Debug.Log ("sfx volume: " + sfxVolumePercent + " & master volume: " + masterVolumePercent);
 		}
 
 	}
